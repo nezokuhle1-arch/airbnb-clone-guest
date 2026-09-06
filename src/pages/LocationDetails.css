@@ -180,3 +180,15 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+  .reserve-success {
+    color: green;
+    margin-top: 12px;
+    text-align: center;
+  }
+  
+  .reserve-error {
+    color: var(--color-primary);
+    margin-top: 12px;
+    text-align: center;
+  }

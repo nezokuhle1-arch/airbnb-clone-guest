@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 import './LocationDetails.css';
 
@@ -9,6 +9,9 @@ function LocationDetails() {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [guests, setGuests] = useState(1);
+  const navigate = useNavigate();
+  const [reserveError, setReserveError] = useState('');
+  const [reserveSuccess, setReserveSuccess] = useState(false);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -30,6 +33,29 @@ function LocationDetails() {
   const subtotal = nights * listing.price;
   const weeklyDiscountAmount = nights >= 7? listing.weeklyDiscount : 0;
   const total = subtotal -weeklyDiscountAmount + listing.cleaningFee + listing.serviceFee + listing.occupancyTaxes;
+
+
+    const handleReserve = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          navigate('/login');
+          return;
+        }
+      
+        try {
+          await api.post('/reservations', {
+            accommodation: id,
+            checkIn,
+            checkOut,
+            guests,
+            totalCost: total,
+          });
+          setReserveSuccess(true);
+          setReserveError('');
+        } catch (err) {
+          setReserveError(err.response?.data?.message || 'Failed to reserve');
+        }
+    };
 
   return (
     <div className="container">
@@ -142,7 +168,11 @@ function LocationDetails() {
                 </div>
             )}
 
-            <button className="reserve-button" disabled={nights === 0}>Reserve</button>
+            <button className="reserve-button" disabled={nights === 0} onClick={handleReserve}>
+            Reserve
+            </button>
+            {reserveSuccess && <p className="reserve-success">Reservation confirmed!</p>}
+            {reserveError && <p className="reserve-error">{reserveError}</p>}
             </div>
       </div>
     </div>

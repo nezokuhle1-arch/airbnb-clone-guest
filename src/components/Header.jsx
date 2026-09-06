@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
+
+  const username = localStorage.getItem('username');
+
   return (
     <header className="header">
       <div className="header-inner container">
@@ -13,6 +16,11 @@ function Header() {
 
         <div className="header-right">
           <Link to="/">Become a host</Link>
+          {username ? (
+            <span>Hi, {username}</span>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
         </div>
       </div>
 
