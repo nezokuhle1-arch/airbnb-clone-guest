@@ -83,3 +83,100 @@
     gap: 12px;
     font-size: 14px;
   }
+
+/* cost calculator */
+
+.cost-calculator {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    height: fit-content;
+    position: sticky;
+    top: 24px;
+  }
+  
+  .calc-price {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  .calc-price-amount {
+    font-weight: 700;
+    font-size: 20px;
+  }
+  
+  .calc-dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 8px;
+  }
+  
+  .calc-date-field {
+    padding: 8px 12px;
+    border-right: 1px solid var(--color-border);
+  }
+  
+  .calc-date-field:last-child {
+    border-right: none;
+  }
+  
+  .calc-date-field label,
+  .calc-guests-field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  
+  .calc-date-field input,
+  .calc-guests-field input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+  }
+  
+  .calc-guests-field {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    margin-bottom: 20px;
+  }
+  
+  .calc-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
+  }
+  
+  .calc-discount {
+    color: var(--color-primary);
+  }
+  
+  .calc-total {
+    color: var(--color-text);
+    font-weight: 700;
+    border-top: 1px solid var(--color-border);
+    padding-top: 12px;
+  }
+  
+  .reserve-button {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .reserve-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }

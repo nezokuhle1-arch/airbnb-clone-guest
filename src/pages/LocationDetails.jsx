@@ -6,6 +6,9 @@ import './LocationDetails.css';
 function LocationDetails() {
   const { id } = useParams();
   const [listing, setListing] = useState(null);
+  const [checkIn, setCheckIn] = useState('');
+  const [checkOut, setCheckOut] = useState('');
+  const [guests, setGuests] = useState(1);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -20,6 +23,13 @@ function LocationDetails() {
   }, [id]);
 
   if (!listing) return <p>Loading...</p>;
+
+  const nights = checkIn && checkOut
+  ? Math.max(0, Math.round((new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24)))
+  : 0;
+  const subtotal = nights * listing.price;
+  const weeklyDiscountAmount = nights >= 7? listing.weeklyDiscount : 0;
+  const total = subtotal -weeklyDiscountAmount + listing.cleaningFee + listing.serviceFee + listing.occupancyTaxes;
 
   return (
     <div className="container">
@@ -76,7 +86,64 @@ function LocationDetails() {
           </div>
         </div>
 
-        {/* cost calculator goes here, next piece */}
+        <div className="cost-calculator">
+            <p className="calc-price"><span className="calc-price-amount">R{listing.price}</span> / night</p>
+
+            <div className="calc-dates">
+                <div className="calc-date-field">
+                <label>Check-in</label>
+                <input type="date" value={checkIn} onChange={(e) => setCheckIn(e.target.value)} />
+                </div>
+                <div className="calc-date-field">
+                <label>Check-out</label>
+                <input type="date" value={checkOut} onChange={(e) => setCheckOut(e.target.value)} />
+                </div>
+            </div>
+
+            <div className="calc-guests-field">
+                <label>Guests</label>
+                <input
+                type="number"
+                min="1"
+                max={listing.guests}
+                value={guests}
+                onChange={(e) => setGuests(Number(e.target.value))}
+                />
+            </div>
+
+            {nights > 0 && (
+                <div className="calc-breakdown">
+                <div className="calc-line">
+                    <span>R{listing.price} x {nights} nights</span>
+                    <span>R{subtotal}</span>
+                </div>
+                {weeklyDiscountAmount > 0 && (
+                    <div className="calc-line calc-discount">
+                    <span>Weekly discount</span>
+                    <span>-R{weeklyDiscountAmount}</span>
+                    </div>
+                )}
+                <div className="calc-line">
+                    <span>Cleaning fee</span>
+                    <span>R{listing.cleaningFee}</span>
+                </div>
+                <div className="calc-line">
+                    <span>Service fee</span>
+                    <span>R{listing.serviceFee}</span>
+                </div>
+                <div className="calc-line">
+                    <span>Occupancy taxes and fees</span>
+                    <span>R{listing.occupancyTaxes}</span>
+                </div>
+                <div className="calc-line calc-total">
+                    <span>Total</span>
+                    <span>R{total}</span>
+                </div>
+                </div>
+            )}
+
+            <button className="reserve-button" disabled={nights === 0}>Reserve</button>
+            </div>
       </div>
     </div>
   );
