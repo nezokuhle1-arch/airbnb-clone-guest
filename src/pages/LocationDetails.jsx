@@ -46,6 +46,38 @@ function LocationDetails() {
           ))}
         </div>
       </div>
+
+      <div className="details-layout">
+        <div className="details-left">
+          <div className="host-line">
+            <p>Entire rental unit hosted by {listing.host?.username}</p>
+            <p className="details-sub">{listing.guests} guests · {listing.bedrooms} bedroom · {listing.bathrooms} bath</p>
+          </div>
+
+          <div className="feature-list">
+            {listing.enhancedCleaning && <p>✨ Enhanced Clean</p>}
+            {listing.selfCheckin && <p>🔑 Self check-in</p>}
+          </div>
+
+          <p className="description">{listing.description}</p>
+
+          <div className="section-divider" />
+
+          <h3>Where you'll sleep</h3>
+          <p>{listing.bedrooms} bedroom{listing.bedrooms !== 1 && 's'}</p>
+
+          <div className="section-divider" />
+
+          <h3>What this place offers</h3>
+          <div className="amenities-grid">
+            {listing.amenities?.map((amenity) => (
+              <p key={amenity}>{amenity}</p>
+            ))}
+          </div>
+        </div>
+
+        {/* cost calculator goes here, next piece */}
+      </div>
     </div>
   );
 }

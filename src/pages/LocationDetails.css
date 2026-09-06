@@ -42,3 +42,44 @@
   .gallery-placeholder {
     background-color: var(--color-bg-secondary);
   }
+
+  /* details */
+
+  .details-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px;
+  }
+  
+  .host-line {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 20px;
+  }
+  
+  .details-sub {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+  }
+  
+  .feature-list p {
+    margin-bottom: 12px;
+  }
+  
+  .description {
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 16px 0;
+  }
+  
+  .section-divider {
+    border-top: 1px solid var(--color-border);
+    margin: 24px 0;
+  }
+  
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    font-size: 14px;
+  }
