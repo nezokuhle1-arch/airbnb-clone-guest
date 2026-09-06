@@ -4,6 +4,8 @@ import img1 from '../assets/sandton-city-hotel.jpeg';
 import img2 from '../assets/the-michelangelo-hotel.jpg';
 import img3 from '../assets/palazzo-hotel.avif';
 import img4 from '../assets/hyde-park-hotel.jpg';
+import tripImage from '../assets/trip-image.jpg';
+import homeImage from '../assets/home-exeprience.jpg';
 
 function Home() {
   const suggestedLocations = [
@@ -34,6 +36,20 @@ function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="experiences container">
+        <h2>Discover Airbnb Experiences</h2>
+        <div className="experiences-grid">
+          <div className="experience-card" style={{ backgroundImage: `url(${tripImage})` }}>
+            <p className="experience-title">Things to do on your trip</p>
+            <button className="experience-button">Experiences</button>
+          </div>
+          <div className="experience-card" style={{ backgroundImage: `url(${homeImage})` }}>
+            <p className="experience-title">Things to do from home</p>
+            <button className="experience-button">Online Experiences</button>
+          </div>
         </div>
       </section>
     </>
