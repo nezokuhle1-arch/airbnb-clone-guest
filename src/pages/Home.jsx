@@ -6,6 +6,7 @@ import img3 from '../assets/palazzo-hotel.avif';
 import img4 from '../assets/hyde-park-hotel.jpg';
 import tripImage from '../assets/trip-image.jpg';
 import homeImage from '../assets/home-exeprience.jpg';
+import giftCardImage from '../assets/gift-cards.png';
 
 function Home() {
   const suggestedLocations = [
@@ -13,6 +14,12 @@ function Home() {
     { title: 'Joburg City Hotel', distance: '150 mi away', image: img2, color: '#E31C5F' },
     { title: 'Woodmead Hotel', distance: '30 mi away', image: img3, color: '#D93900' },
     { title: 'Hyde Park Hotel', distance: '34 mi away', image: img4, color: '#C13515' },
+  ];
+
+  const destinations = [
+    'Phoenix', 'Scottsdale', 'Miami Beach', 'San Diego', 'Sedona', 'Nashville',
+    'Aspen', 'Vail', 'Malibu', 'Palm Springs', 'Charleston', 'Savannah',
+    'Big Bear Lake', 'Bar Harbor', 'Austin', 'Jamestown', 'Adirondacks', 'Kaanapali',
   ];
 
   return (
@@ -50,6 +57,32 @@ function Home() {
             <p className="experience-title">Things to do from home</p>
             <button className="experience-button">Online Experiences</button>
           </div>
+        </div>
+      </section>
+
+      <section className="shop container">
+        <div className="shop-text">
+          <h2>Shop Airbnb gift cards</h2>
+          <button className="shop-button">Learn more</button>
+        </div>
+        <div className="shop-image">
+          <img src={giftCardImage} alt="Airbnb gift cards" />
+        </div>
+      </section>
+
+      <section className="getaways container">
+        <h2>Inspiration for future getaways</h2>
+        <div className="getaways-tabs">
+          <span className="tab tab-active">Arts & culture</span>
+          <span className="tab">Mountain cabins</span>
+          <span className="tab">Beach destinations</span>
+          <span className="tab">Popular destinations</span>
+          <span className="tab">Unique stays</span>
+        </div>
+        <div className="getaways-list">
+          {destinations.map((city) => (
+            <p key={city}>{city}</p>
+          ))}
         </div>
       </section>
     </>
