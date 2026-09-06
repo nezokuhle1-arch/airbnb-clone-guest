@@ -1,0 +1,71 @@
+.location-filter-bar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 24px 0;
+  }
+  
+  .location-filter-bar input {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .filter-pill {
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+  }
+  
+  .location-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  
+  .location-card {
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 24px;
+  }
+  
+  .location-card img,
+  .location-card-placeholder {
+    width: 220px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+    background-color: var(--color-bg-secondary);
+  }
+  
+  .location-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .location-card-title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  .location-card-type,
+  .location-card-amenities,
+  .location-card-rating {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+  }
+  
+  .location-card-price {
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 4px;
+  }
