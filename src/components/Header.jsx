@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Header.css';
+import airbnbLogo from '../assets/airbnb_logo.webp';
 
 function Header() {
 
@@ -8,7 +9,7 @@ function Header() {
   return (
     <header className="header">
       <div className="header-inner container">
-        <Link to="/" className="logo">airbnb</Link>
+        <Link to="/" className="logo"><img src={airbnbLogo} alt="airbnb" /></Link>
 
         <nav className="header-nav">
           <Link to="/">Places to stay</Link>
@@ -17,7 +18,7 @@ function Header() {
         <div className="header-right">
           <Link to="/">Become a host</Link>
           {username ? (
-            <span>Hi, {username}</span>
+            <span className="user-pill">Hi, {username}</span>
           ) : (
             <Link to="/login">Login</Link>
           )}
