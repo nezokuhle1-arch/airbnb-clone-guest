@@ -1,11 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import './Header.css';
 import airbnbLogo from '../assets/airbnb_logo.webp';
 
 function Header() {
-
   const username = localStorage.getItem('username');
+  const [term, setTerm] = useState('');
+  const navigate = useNavigate();
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/location?search=${encodeURIComponent(term.trim())}`);
+  };
+
+  
   return (
     <header className="header">
       <div className="header-inner container">
@@ -25,10 +33,16 @@ function Header() {
         </div>
       </div>
 
-      <div className="search-bar container">
+    
+      <form className="search-bar container" onSubmit={handleSearch}>
         <div className="search-field">
           <label>Location</label>
-          <input type="text" placeholder="Where are you going?" />
+          <input
+            type="text"
+            placeholder="Where are you going?"
+            value={term}
+            onChange={(e) => setTerm(e.target.value)}
+          />
         </div>
         <div className="search-field">
           <label>Check in</label>
@@ -42,8 +56,8 @@ function Header() {
           <label>Guests</label>
           <input type="number" placeholder="Add guests" min="1" />
         </div>
-        <button className="search-button">🔍</button>
-      </div>
+        <button type="submit" className="search-button">🔍</button>
+      </form>
     </header>
   );
 }

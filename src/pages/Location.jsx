@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import api from '../api/axios';
 import './Location.css';
 
 function Location() {
   const [listings, setListings] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchTerm = searchParams.get('search') || '';
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -30,7 +31,9 @@ function Location() {
           type="text"
           placeholder="Filter by location..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) =>
+            setSearchParams(e.target.value ? { search: e.target.value } : {}, { replace: true })
+          }
         />
         <span className="filter-pill">Price</span>
         <span className="filter-pill">Type of place</span>
