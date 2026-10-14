@@ -50,6 +50,26 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   }
 
+  .user-menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logout-button {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .logout-button:hover {
+    background-color: var(--color-bg-secondary);
+  }
+
   .search-bar {
     display: flex;
     align-items: center;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
+import './Login.css';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -16,6 +17,7 @@ function Login() {
 
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('username', response.data.username);
+            window.dispatchEvent(new Event('authchange'));
 
             navigate('/');
         } catch (err) {
@@ -24,26 +26,37 @@ function Login() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h1>Login</h1>
-            {error && <p>{error}</p>}
-            
-            <input 
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            required
-            />
-            <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            required
-            />
-            <button type="submit">Login</button>
-        </form>
+        <div className="login-page">
+            <form className="login-card" onSubmit={handleSubmit}>
+                <h1>Log in</h1>
+                <p className="login-subtitle">Welcome back to airbnb</p>
+
+                {error && <p className="login-error">{error}</p>}
+
+                <label className="login-field">
+                    <span>Email</span>
+                    <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
+                    required
+                    />
+                </label>
+                <label className="login-field">
+                    <span>Password</span>
+                    <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                    required
+                    />
+                </label>
+
+                <button type="submit" className="login-button">Login</button>
+            </form>
+        </div>
     );
 
 }
