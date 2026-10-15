@@ -82,3 +82,20 @@
 .login-button:hover {
   background: #e31c5f;
 }
+
+.login-switch {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  color: #717171;
+}
+
+.login-switch a {
+  color: #222;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.login-switch a:hover {
+  color: #ff385c;
+}

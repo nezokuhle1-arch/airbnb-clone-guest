@@ -4,6 +4,7 @@ import Location from './pages/Location';
 import Home from './pages/Home';
 import LocationDetails from './pages/LocationDetails';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
         <Route path="location" element={<Location />} />
         <Route path="location/:id" element={<LocationDetails />} />
       </Route>

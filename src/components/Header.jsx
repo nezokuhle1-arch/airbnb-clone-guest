@@ -8,7 +8,7 @@ function Header() {
   const [term, setTerm] = useState('');
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const isLoginPage = pathname === '/login';
+  const isLoginPage = pathname === '/login' || pathname === '/signup';
 
   // Re-read the username whenever login or logout rings the "authchange" doorbell
   useEffect(() => {
@@ -48,7 +48,10 @@ function Header() {
               <button className="logout-button" onClick={handleLogout}>Log out</button>
             </>
           ) : (
-            <Link to="/login">Login</Link>
+            <>
+              <Link to="/login" className="auth-link">Login</Link>
+              <Link to="/signup" className="auth-link">Sign up</Link>
+            </>
           )}
         </div>
       </div>
